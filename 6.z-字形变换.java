@@ -10,18 +10,13 @@ class Solution {
         if (numRows == 1)
             return s;
         int leng = s.length();
+        int cyclelen = numRows * 2 - 2;
         StringBuilder r = new StringBuilder();
         for (int i = 0; i < numRows; i++) {
-            int j = 0;
-            while (true) {
-                if ((j * (2 * numRows - 2) + i) < leng)
-                    r.append(s.charAt(j * (2 * numRows - 2) + i));
-                else
-                    break;
-                if (i != 0 && i != numRows - 1 && ((j + 1) * (2 * numRows - 2) - i) < leng) {
-                    r.append(s.charAt((j + 1) * (2 * numRows - 2) - i));
-                }
-                j++;
+            for (int j = 0; j + i < leng; j += cyclelen) {
+                r.append(s.charAt(j + i));
+                if (i != 0 && i != numRows - 1 && j + cyclelen - i < leng)
+                    r.append(s.charAt(j + cyclelen - i));
             }
         }
         return new String(r);
@@ -29,9 +24,9 @@ class Solution {
 }
 
 // @lc code=end
-class Main {
-    public static void main(String[] args) {
-        Solution6 solution6 = new Solution6();
-        System.out.println(solution6.convert("PAYPALISHIRING", 1));
-    }
-}
+// class Main {
+// public static void main(String[] args) {
+// Solution6 solution6 = new Solution6();
+// System.out.println(solution6.convert("PAYPALISHIRING", 3));
+// }
+// }
