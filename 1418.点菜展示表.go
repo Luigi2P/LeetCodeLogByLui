@@ -5,8 +5,10 @@
  */
 
 // @lc code=start
+package main
+
 func displayTable(orders [][]string) [][]string {
 
 }
-// @lc code=end
 
+// @lc code=end
