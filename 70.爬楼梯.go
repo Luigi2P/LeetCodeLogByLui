@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-// package main
+package main
 
 func climbStairs(n int) int {
 	var (
