@@ -12,7 +12,7 @@
  *     Right *TreeNode
  * }
  */
-package main
+package main1
 
 type TreeNode struct {
 	Val   int

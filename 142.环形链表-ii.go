@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=141 lang=golang
+ * @lc app=leetcode.cn id=142 lang=golang
  *
- * [141] 环形链表
+ * [142] 环形链表 II
  */
 package main
 
@@ -18,24 +18,31 @@ type ListNode struct {
  *     Next *ListNode
  * }
  */
-func hasCycle(head *ListNode) bool {
+
+func detectCycle(head *ListNode) *ListNode {
 	var (
 		fast *ListNode = head
 		slow *ListNode = head
 	)
 	if head == nil {
-		return false
+		return nil
 	}
 	for {
 		if fast != nil && fast.Next != nil {
 			slow = slow.Next
 			fast = fast.Next.Next
 		} else {
-			return false
+			return nil
 		}
 		if fast == slow {
-			return true
+			break
 		}
+	}
+	for {
+		if head == slow {
+			return head
+		}
+		head, slow = head.Next, slow.Next
 	}
 }
 
